@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @date : 2026年04月12日 17:30:13
  * @description :
  */
-public class LeetCode001TO005 {
+public class LeetCode001TO010 {
 
     public static void main(String[] args) {
         /**

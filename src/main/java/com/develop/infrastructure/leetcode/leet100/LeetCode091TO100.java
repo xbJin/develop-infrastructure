@@ -7,7 +7,7 @@ import io.micrometer.common.util.StringUtils;
  * @date : 2026年04月13日 23:24:57
  * @description :
  */
-public class LeetCode096TO100 {
+public class LeetCode091TO100 {
 
     public static void main(String[] args) {
         System.out.println(numTrees1(3));
