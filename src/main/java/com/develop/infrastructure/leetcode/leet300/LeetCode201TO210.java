@@ -26,6 +26,9 @@ public class LeetCode201TO210 {
         if (Objects.equals(n,1)){
             return true;
         }
+        /**
+         * 记录执行过的数字,避免循环计算,进入无限循环
+         */
         Set<Integer> seen = new HashSet<>();
         while (n != 1 && !seen.contains(n)) {
             seen.add(n);
@@ -34,7 +37,12 @@ public class LeetCode201TO210 {
         return n == 1;
     }
 
-    // 计算数字各位置平方和
+    /**
+     * 精髓就在循环里面每次num % 10拿到余数,就是最后一位数字,进行计算
+     * 然后num /= 10,就是去掉最后一位数字，接着执行下一步循环
+     * 只要num > 0,就说明还存在可以操作的数字
+     * 最后返回sum
+     */
     private static int getDigitSquareSum(int num) {
         int sum = 0;
         while (num > 0) {

@@ -12,14 +12,16 @@ public class LeetCode001TO010 {
 
     public static void main(String[] args) {
         /**
-         * 两数相加,hash表
+         * LeetCode001
+         * 两数之和,hash表
          */
         int[] arr01 = twoSum01(new int[]{2, 4, 6, 7}, 7);
         int[] arr02 = twoSum01(new int[]{2, 4, 6, 7}, 6);
         System.out.println(Arrays.toString(arr01));
         System.out.println(Arrays.toString(arr02));
         /**
-         * 两数相加,双重for循环
+         * LeetCode001
+         * 两数之和,双重for循环
          */
         int[] arr03 = twoSum02(new int[]{2, 4, 6, 7}, 7);
         int[] arr04 = twoSum02(new int[]{2, 4, 6, 7}, 6);
@@ -76,8 +78,29 @@ public class LeetCode001TO010 {
         return new int[]{-1,-1};
     }
 
+    /**
+     * LeetCode002,两数相加
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static int[] twoSumAdd(ListNode l1, ListNode l2){
+
+        return null;
+    }
 
 
+    public static class ListNode {
+        int val;
+        ListNode next;
 
+        public ListNode() {
+        }
+
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
 
 }
