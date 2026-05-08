@@ -139,7 +139,10 @@ public class BubbleSort {
         }
     }*/
 
-
+    /**
+     * 双向冒泡
+     * @param arr
+     */
     public static void cocktailSort(int[] arr){
         if (arr == null || arr.length <= 1){
             return;
