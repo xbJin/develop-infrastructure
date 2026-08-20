@@ -18,28 +18,52 @@ public class LeetCode091TO100 {
 
 
     /**
-     * 解码方式
+     * LeetCode91 解码方法
+     * @param s
      * @return
      */
-    public static int getDecodeMethod(String code){
-        // 空字符串或者0开头的
-        if (StringUtils.isBlank(code) || code.startsWith("0")){
+    public static int numDecodings(String s) {
+        // 字符串长度
+        int n = s.length();
+
+        // --------------------- 边界情况 ---------------------
+        // 如果字符串为空，或者第一个字符是 0，直接返回 0（无法解码）
+        if (n == 0 || s.charAt(0) == '0') {
             return 0;
         }
-        if (code.length() == 1){
-            return 1;
+
+        // --------------------- 定义DP数组 ---------------------
+        // dp[i] = 前 i 个字符的解码方法总数
+        int[] dp = new int[n + 1];
+
+        // --------------------- 初始化 ---------------------
+        dp[0] = 1;          // 空字符串，解码方法为1（基准）
+        dp[1] = 1;          // 第一个字符非0，所以有一种方法
+
+        // --------------------- 开始递推 ---------------------
+        for (int i = 2; i <= n; i++) {
+            // --------------------- 情况1：单独解码第 i 个字符 ---------------------
+            // 第 i 个字符对应 s 的下标是 i-1
+            char oneChar = s.charAt(i - 1);
+            if (oneChar != '0') {
+                // 单独解码合法，方法数 = 前 i-1 个字符的方法数
+                dp[i] += dp[i - 1];
+            }
+
+            // --------------------- 情况2：和前一个字符组合解码 ---------------------
+            // 取两位字符：i-2 和 i-1 位置
+            String twoStr = s.substring(i - 2, i);
+            int twoNum = Integer.parseInt(twoStr);
+            // 必须满足 10~26 才合法
+            if (twoNum >= 10 && twoNum <= 26) {
+                // 组合解码合法，方法数 += 前 i-2 个字符的方法数
+                dp[i] += dp[i - 2];
+            }
         }
-        /**
-         * 这里应该是1-26对应字母
-         */
-        char[] charArray = code.toCharArray();
 
-
-        return 0;
+        // --------------------- 返回最终结果 ---------------------
+        return dp[n];
     }
-
-
-
 
 
     /**

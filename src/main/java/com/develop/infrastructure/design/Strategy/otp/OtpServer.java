@@ -7,7 +7,7 @@ package com.develop.infrastructure.design.Strategy.otp;
  */
 public interface OtpServer {
 
-    // 发送
+    // todo jinxiaobo 待完善
     boolean sendOtp(String msg);
 
     // 验证

@@ -3,58 +3,81 @@ package com.develop.infrastructure.leetcode.leet200.leet146;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ConcurrentLRUCache<K, V> extends LRUCache<K, V> {
+public class ConcurrentLRUCache<K, V> {
+    private final LRUCache<K, V> cache;
     private final Lock lock = new ReentrantLock();
     
     public ConcurrentLRUCache(int capacity) {
-        super(capacity);
+        this.cache = new LRUCache<>(capacity);
     }
     
-    @Override
     public V get(K key) {
         lock.lock();
         try {
-            return super.get(key);
+            return cache.get(key);
         } finally {
             lock.unlock();
         }
     }
     
-    @Override
     public void put(K key, V value) {
         lock.lock();
         try {
-            super.put(key, value);
+            cache.put(key, value);
         } finally {
             lock.unlock();
         }
     }
     
-    @Override
     public boolean containsKey(K key) {
         lock.lock();
         try {
-            return super.containsKey(key);
+            return cache.containsKey(key);
         } finally {
             lock.unlock();
         }
     }
     
-    @Override
-    public V remove(K key) {
+    public int size() {
         lock.lock();
         try {
-            return super.remove(key);
+            return cache.size();
         } finally {
             lock.unlock();
         }
     }
     
-    @Override
     public void clear() {
         lock.lock();
         try {
-            super.clear();
+            cache.clear();
+        } finally {
+            lock.unlock();
+        }
+    }
+    
+    public V remove(K key) {
+        lock.lock();
+        try {
+            return cache.remove(key);
+        } finally {
+            lock.unlock();
+        }
+    }
+    
+    public void printCache() {
+        lock.lock();
+        try {
+            cache.printCache();
+        } finally {
+            lock.unlock();
+        }
+    }
+    
+    public Iterable<K> keys() {
+        lock.lock();
+        try {
+            return cache.keys();
         } finally {
             lock.unlock();
         }
